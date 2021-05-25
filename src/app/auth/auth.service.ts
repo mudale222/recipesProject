@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model';
-
+import { environment } from '../../environments/environment'
 
 export interface AuthResponseData {
   kind: string,
@@ -27,7 +27,7 @@ export class AuthService {
   constructor(private http: HttpClient,
     private router: Router) { }
 
-  key: string = 'AIzaSyB1pB6_UlHX0aFOON0dbg89CebYAiO7zNY'
+  key: string = environment.firebaseApiKey
 
   signUp(email: string, password: string) {
     return this.http.post<AuthResponseData>
